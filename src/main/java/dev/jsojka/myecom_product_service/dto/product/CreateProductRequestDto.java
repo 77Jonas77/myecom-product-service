@@ -13,7 +13,6 @@ public record CreateProductRequestDto(
         @NotBlank String productTitle,
         @NotBlank String imageUrl,
         @NotNull BigDecimal priceUnit,
-        @NotNull Integer quantity,
-        @NotNull Integer categoryId
+        @NotNull Integer quantity
 ) implements Serializable {
 }
