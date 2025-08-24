@@ -7,6 +7,7 @@ import dev.jsojka.myecom_product_service.repository.CategoryRepository;
 import dev.jsojka.myecom_product_service.service.CategoryService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,5 +35,10 @@ public class CategoryServiceImpl implements CategoryService {
         categoryRepository.findById(categoryId) // is it necessary?
                 .orElseThrow(() -> new CategoryNotFoundException("Category with id: " + categoryId + " not found."));
         categoryRepository.deleteById(categoryId);
+    }
+
+    @Override
+    public List<CategoryDto> findAll() {
+        return categoryRepository.findAll();
     }
 }

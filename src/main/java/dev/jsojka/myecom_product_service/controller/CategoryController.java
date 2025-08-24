@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -39,5 +40,11 @@ public class CategoryController {
     public ResponseEntity<ApiResponse> deleteById(@PathVariable Integer categoryId) {
         categoryService.deleteById(categoryId);
         return ResponseEntity.ok(new ApiResponse("Category with id: " + categoryId + " deleted successfully."));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CategoryDto>> findAll() {
+        List<CategoryDto> response = categoryService.findAll();
+        return ResponseEntity.ok(response);
     }
 }

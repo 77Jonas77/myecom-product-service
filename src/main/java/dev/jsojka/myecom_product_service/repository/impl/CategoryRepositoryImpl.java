@@ -8,6 +8,8 @@ import dev.jsojka.myecom_product_service.repository.CategoryRepository;
 import dev.jsojka.myecom_product_service.repository.jpa.CategoryRepositoryJpa;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -37,5 +39,15 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     @Override
     public void deleteById(Integer categoryId) {
         categoryRepositoryJpa.deleteById(categoryId);
+    }
+
+    @Override
+    public List<CategoryDto> findAll() {
+        List<CategoryEntity> categoryEntities = categoryRepositoryJpa.findAll();
+
+        return categoryEntities
+                .stream()
+                .map(categoryMapper::categoryEntityToCategoryDto)
+                .toList();
     }
 }
