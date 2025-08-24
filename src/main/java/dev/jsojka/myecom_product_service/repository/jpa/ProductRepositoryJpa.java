@@ -2,12 +2,15 @@ package dev.jsojka.myecom_product_service.repository.jpa;
 
 import dev.jsojka.myecom_product_service.model.CategoryEntity;
 import dev.jsojka.myecom_product_service.model.ProductEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
+import java.nio.channels.FileChannel;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -25,4 +28,6 @@ public interface ProductRepositoryJpa extends JpaRepository<ProductEntity, UUID>
             @Param("updatedAt") Instant updatedAt,
             @Param("category") CategoryEntity category
     );
+
+    Page<ProductEntity> findByCategory_CategoryId(Integer categoryId, Pageable pageable);
 }

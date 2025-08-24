@@ -10,6 +10,8 @@ import dev.jsojka.myecom_product_service.model.ProductEntity;
 import dev.jsojka.myecom_product_service.repository.ProductRepository;
 import dev.jsojka.myecom_product_service.repository.jpa.CategoryRepositoryJpa;
 import dev.jsojka.myecom_product_service.repository.jpa.ProductRepositoryJpa;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.time.Instant;
@@ -59,5 +61,18 @@ public class ProductRepositoryImpl implements ProductRepository {
         productRepositoryJpa.updateByProductId(productId, requestDto.productTitle(), requestDto.quantity(),
                 requestDto.imageUrl(), requestDto.priceUnit(), Instant.now(), category); // I think it might be bad practise
     }
+
+    @Override
+    public Page<ProductDto> findAll(Pageable pageable) {
+        return productRepositoryJpa.findAll(pageable)
+                .map(productMapper::productEntityToProductDto);
+    }
+
+    @Override
+    public Page<ProductDto> findByCategoryId(Integer categoryId, Pageable pageable) {
+        return productRepositoryJpa.findByCategory_CategoryId(categoryId, pageable)
+                .map(productMapper::productEntityToProductDto);
+    }
+
 
 }

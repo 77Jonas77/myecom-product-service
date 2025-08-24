@@ -10,6 +10,8 @@ import dev.jsojka.myecom_product_service.repository.CategoryRepository;
 import dev.jsojka.myecom_product_service.repository.ProductRepository;
 import dev.jsojka.myecom_product_service.repository.jpa.CategoryRepositoryJpa;
 import dev.jsojka.myecom_product_service.service.ProductService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,5 +59,15 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new ProductNotFoundException("Product with id: " + productId + " not found."));
 
         productRepository.updateById(requestDto, productId);
+    }
+
+    @Override
+    public Page<ProductDto> findAll(Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<ProductDto> findAllByCategoryId(Integer categoryId, Pageable pageable) {
+        return productRepository.findByCategoryId(categoryId, pageable);
     }
 }
