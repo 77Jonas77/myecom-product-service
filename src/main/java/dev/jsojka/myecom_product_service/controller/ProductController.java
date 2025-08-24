@@ -37,7 +37,7 @@ public class ProductController {
     @PutMapping("/{productId}")
     public ResponseEntity<ApiResponse> updateById(@PathVariable UUID productId, @RequestBody @Valid UpdateProductRequestDto requestDto) {
         productService.updateById(productId, requestDto);
-        return ResponseEntity.ok(new ApiResponse("Product with id: " + productId + "updated successfully."));
+        return ResponseEntity.ok(new ApiResponse("Product with id: " + productId + " updated successfully."));
     }
 
     @DeleteMapping("/{productId}")

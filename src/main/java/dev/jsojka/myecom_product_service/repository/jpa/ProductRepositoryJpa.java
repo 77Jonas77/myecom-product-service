@@ -1,5 +1,6 @@
 package dev.jsojka.myecom_product_service.repository.jpa;
 
+import dev.jsojka.myecom_product_service.model.CategoryEntity;
 import dev.jsojka.myecom_product_service.model.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -14,13 +15,14 @@ public interface ProductRepositoryJpa extends JpaRepository<ProductEntity, UUID>
 
     @Modifying
     @Query("update ProductEntity p set p.productId=:productId, p.productTitle=:productTitle, p.imageUrl=:imageUrl," +
-            "p.priceUnit=:priceUnit, p.quantity=:quantity, p.updatedAt=:updatedAt")
+            "p.priceUnit=:priceUnit, p.quantity=:quantity, p.updatedAt=:updatedAt, p.category=:category")
     void updateByProductId(
             @Param("productId") UUID productId,
             @Param("productTitle") String productTitle,
             @Param("quantity") Integer quantity,
             @Param("imageUrl") String imageUrl,
             @Param("priceUnit") BigDecimal priceUnit,
-            @Param("updatedAt") Instant updatedAt
+            @Param("updatedAt") Instant updatedAt,
+            @Param("category") CategoryEntity category
     );
 }

@@ -4,8 +4,12 @@ import dev.jsojka.myecom_product_service.dto.category.CategoryDto;
 import dev.jsojka.myecom_product_service.dto.category.CreateCategoryRequestDto;
 import jakarta.validation.Valid;
 
+import java.util.UUID;
+
 public interface CategoryService {
     CategoryDto save(CreateCategoryRequestDto requestDto);
 
     CategoryDto findById(Integer categoryId);
+
+    void deleteById(Integer categoryId);
 }

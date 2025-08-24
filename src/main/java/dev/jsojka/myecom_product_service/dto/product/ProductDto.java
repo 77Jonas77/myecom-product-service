@@ -1,5 +1,6 @@
 package dev.jsojka.myecom_product_service.dto.product;
 
+import dev.jsojka.myecom_product_service.dto.category.CategoryDto;
 import lombok.Builder;
 
 import java.io.Serializable;
@@ -12,5 +13,5 @@ import java.util.UUID;
  */
 @Builder
 public record ProductDto(UUID productId, String productTitle, String imageUrl, BigDecimal priceUnit, Integer quantity,
-                         Instant createdAt, Instant updatedAt) implements Serializable {
+                         Instant createdAt, Instant updatedAt, CategoryDto category) implements Serializable {
 }

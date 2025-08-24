@@ -1,9 +1,6 @@
 package dev.jsojka.myecom_product_service.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -35,4 +32,7 @@ public class ProductEntity extends AbstractEntitySuperclass implements Serializa
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "category_id", nullable = false)
+    private CategoryEntity category;
 }

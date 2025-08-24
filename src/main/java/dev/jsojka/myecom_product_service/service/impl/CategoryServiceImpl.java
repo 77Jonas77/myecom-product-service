@@ -28,4 +28,11 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.findById(categoryId)
                 .orElseThrow(() -> new CategoryNotFoundException("Category with id: " + categoryId + " not found."));
     }
+
+    @Override
+    public void deleteById(Integer categoryId) {
+        categoryRepository.findById(categoryId) // is it necessary?
+                .orElseThrow(() -> new CategoryNotFoundException("Category with id: " + categoryId + " not found."));
+        categoryRepository.deleteById(categoryId);
+    }
 }

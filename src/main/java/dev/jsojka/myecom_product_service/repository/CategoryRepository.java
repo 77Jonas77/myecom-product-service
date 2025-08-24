@@ -9,4 +9,7 @@ public interface CategoryRepository {
     CategoryDto save(CreateCategoryRequestDto requestDto);
 
     Optional<CategoryDto> findById(Integer categoryId);
+
+    void deleteById(Integer categoryId);
+
 }

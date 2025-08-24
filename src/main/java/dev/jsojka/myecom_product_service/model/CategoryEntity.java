@@ -23,8 +23,8 @@ public class CategoryEntity extends AbstractEntitySuperclass {
     @Column(name = "category_title", unique = true)
     private String categoryTitle;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
-//    @JsonIgnore
-//    private List<ProductEntity> products;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    @JsonIgnore
+    private List<ProductEntity> products;
 
 }

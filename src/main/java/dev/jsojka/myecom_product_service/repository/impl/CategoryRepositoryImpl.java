@@ -33,4 +33,9 @@ public class CategoryRepositoryImpl implements CategoryRepository {
         Optional<CategoryEntity> categoryEntity = categoryRepositoryJpa.findById(categoryId);
         return categoryEntity.map(categoryMapper::categoryEntityToCategoryDto).or(Optional::empty);
     }
+
+    @Override
+    public void deleteById(Integer categoryId) {
+        categoryRepositoryJpa.deleteById(categoryId);
+    }
 }
