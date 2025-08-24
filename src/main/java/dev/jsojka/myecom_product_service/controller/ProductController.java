@@ -7,10 +7,9 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/v1/products")
@@ -26,5 +25,11 @@ public class ProductController {
     public ResponseEntity<ProductDto> save(@RequestBody @Valid CreateProductRequestDto requestDto) {
         ProductDto response = productService.save(requestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping("/{productId}")
+    public ResponseEntity<ProductDto> findById(@PathVariable UUID productId) {
+        ProductDto response = productService.findById(productId);
+        return ResponseEntity.ok(response);
     }
 }

@@ -6,6 +6,9 @@ import dev.jsojka.myecom_product_service.model.ProductEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+import java.util.UUID;
+
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {
 
@@ -23,4 +26,11 @@ public class ProductRepositoryImpl implements ProductRepository {
         ProductEntity savedProductEntity = productRepositoryJpa.save(productEntity);
         return productMapper.productEntityToProductDto(savedProductEntity);
     }
+
+    @Override
+    public Optional<ProductDto> findById(UUID productId) {
+        Optional<ProductEntity> productEntity = productRepositoryJpa.findById(productId);
+        return productEntity.map(productMapper::productEntityToProductDto).or(() -> Optional.of(ProductDto.builder().build()));
+    }
+
 }
