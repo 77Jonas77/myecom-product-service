@@ -1,9 +1,10 @@
 package dev.jsojka.myecom_product_service.service;
 
-import dev.jsojka.myecom_product_service.dto.CreateProductRequestDto;
-import dev.jsojka.myecom_product_service.dto.ProductDto;
-import dev.jsojka.myecom_product_service.dto.UpdateProductRequestDto;
-import jakarta.validation.Valid;
+import dev.jsojka.myecom_product_service.dto.product.CreateProductRequestDto;
+import dev.jsojka.myecom_product_service.dto.product.ProductDto;
+import dev.jsojka.myecom_product_service.dto.product.UpdateProductRequestDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.UUID;
 
@@ -15,4 +16,8 @@ public interface ProductService {
     void deleteById(UUID productId);
 
     void updateById(UUID productId, UpdateProductRequestDto requestDto);
+
+    Page<ProductDto> findAll(Pageable pageable);
+
+    Page<ProductDto> findAllByCategoryId(Integer categoryId, Pageable pageable);
 }
