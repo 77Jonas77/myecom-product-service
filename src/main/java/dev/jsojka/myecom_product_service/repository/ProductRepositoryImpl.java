@@ -33,4 +33,9 @@ public class ProductRepositoryImpl implements ProductRepository {
         return productEntity.map(productMapper::productEntityToProductDto).or(() -> Optional.of(ProductDto.builder().build()));
     }
 
+    @Override
+    public void deleteById(UUID productId) {
+        productRepositoryJpa.deleteById(productId);
+    }
+
 }

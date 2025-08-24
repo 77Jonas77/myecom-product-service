@@ -10,4 +10,6 @@ public interface ProductService {
 
     ProductDto findById(UUID productId);
 
+    void deleteById(UUID productId);
+
 }

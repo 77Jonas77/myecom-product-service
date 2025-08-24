@@ -36,4 +36,9 @@ public class ProductServiceImpl implements ProductService {
         }
         return productDto.get();
     }
+
+    @Override
+    public void deleteById(UUID productId) {
+        productRepository.deleteById(productId);
+    }
 }

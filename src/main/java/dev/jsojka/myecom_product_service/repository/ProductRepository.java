@@ -9,4 +9,7 @@ public interface ProductRepository {
     ProductDto save(ProductDto productDto);
 
     Optional<ProductDto> findById(UUID productId);
+
+    void deleteById(UUID productId);
+
 }

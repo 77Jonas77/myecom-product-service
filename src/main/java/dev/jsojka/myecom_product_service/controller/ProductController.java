@@ -1,5 +1,6 @@
 package dev.jsojka.myecom_product_service.controller;
 
+import dev.jsojka.myecom_product_service.dto.ApiResponse;
 import dev.jsojka.myecom_product_service.dto.CreateProductRequestDto;
 import dev.jsojka.myecom_product_service.dto.ProductDto;
 import dev.jsojka.myecom_product_service.service.ProductService;
@@ -32,4 +33,11 @@ public class ProductController {
         ProductDto response = productService.findById(productId);
         return ResponseEntity.ok(response);
     }
+
+    @DeleteMapping("/{productId}")
+    public ResponseEntity<ApiResponse> deleteById(@PathVariable UUID productId) {
+        productService.deleteById(productId);
+        return ResponseEntity.ok(new ApiResponse("Product with id: " + productId + " successfully deleted."));
+    }
+
 }
