@@ -3,6 +3,7 @@ package dev.jsojka.myecom_product_service.controller;
 import dev.jsojka.myecom_product_service.dto.ApiResponse;
 import dev.jsojka.myecom_product_service.dto.CreateProductRequestDto;
 import dev.jsojka.myecom_product_service.dto.ProductDto;
+import dev.jsojka.myecom_product_service.dto.UpdateProductRequestDto;
 import dev.jsojka.myecom_product_service.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,12 @@ public class ProductController {
     public ResponseEntity<ProductDto> findById(@PathVariable UUID productId) {
         ProductDto response = productService.findById(productId);
         return ResponseEntity.ok(response);
+    }
+
+    @PutMapping("/{productId}")
+    public ResponseEntity<ApiResponse> updateById(@PathVariable UUID productId, @RequestBody @Valid UpdateProductRequestDto requestDto) {
+        productService.updateById(productId, requestDto);
+        return ResponseEntity.ok(new ApiResponse("Product with id: " + productId + "updated successfully."));
     }
 
     @DeleteMapping("/{productId}")

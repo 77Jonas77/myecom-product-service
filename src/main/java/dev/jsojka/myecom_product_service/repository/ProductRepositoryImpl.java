@@ -1,11 +1,13 @@
 package dev.jsojka.myecom_product_service.repository;
 
 import dev.jsojka.myecom_product_service.dto.ProductDto;
+import dev.jsojka.myecom_product_service.dto.UpdateProductRequestDto;
 import dev.jsojka.myecom_product_service.mapper.ProductMapper;
 import dev.jsojka.myecom_product_service.model.ProductEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -36,6 +38,12 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public void deleteById(UUID productId) {
         productRepositoryJpa.deleteById(productId);
+    }
+
+    @Override
+    public void updateById(UpdateProductRequestDto requestDto, UUID productId) {
+        productRepositoryJpa.updateByProductId(productId, requestDto.productTitle(), requestDto.quantity(),
+                requestDto.imageUrl(), requestDto.priceUnit(), Instant.now());
     }
 
 }
