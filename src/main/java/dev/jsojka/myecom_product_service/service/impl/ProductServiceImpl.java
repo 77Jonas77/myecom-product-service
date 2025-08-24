@@ -1,16 +1,15 @@
-package dev.jsojka.myecom_product_service.service;
+package dev.jsojka.myecom_product_service.service.impl;
 
-import dev.jsojka.myecom_product_service.dto.CreateProductRequestDto;
-import dev.jsojka.myecom_product_service.dto.ProductDto;
-import dev.jsojka.myecom_product_service.dto.UpdateProductRequestDto;
+import dev.jsojka.myecom_product_service.dto.product.CreateProductRequestDto;
+import dev.jsojka.myecom_product_service.dto.product.ProductDto;
+import dev.jsojka.myecom_product_service.dto.product.UpdateProductRequestDto;
 import dev.jsojka.myecom_product_service.exception.ProductNotFoundException;
 import dev.jsojka.myecom_product_service.mapper.ProductMapper;
 import dev.jsojka.myecom_product_service.repository.ProductRepository;
-import lombok.RequiredArgsConstructor;
+import dev.jsojka.myecom_product_service.service.ProductService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @Service

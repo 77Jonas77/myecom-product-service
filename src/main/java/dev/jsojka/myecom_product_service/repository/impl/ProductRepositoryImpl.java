@@ -1,10 +1,11 @@
-package dev.jsojka.myecom_product_service.repository;
+package dev.jsojka.myecom_product_service.repository.impl;
 
-import dev.jsojka.myecom_product_service.dto.ProductDto;
-import dev.jsojka.myecom_product_service.dto.UpdateProductRequestDto;
+import dev.jsojka.myecom_product_service.dto.product.ProductDto;
+import dev.jsojka.myecom_product_service.dto.product.UpdateProductRequestDto;
 import dev.jsojka.myecom_product_service.mapper.ProductMapper;
 import dev.jsojka.myecom_product_service.model.ProductEntity;
-import lombok.RequiredArgsConstructor;
+import dev.jsojka.myecom_product_service.repository.ProductRepository;
+import dev.jsojka.myecom_product_service.repository.jpa.ProductRepositoryJpa;
 import org.springframework.stereotype.Repository;
 
 import java.time.Instant;
@@ -32,7 +33,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public Optional<ProductDto> findById(UUID productId) {
         Optional<ProductEntity> productEntity = productRepositoryJpa.findById(productId);
-        return productEntity.map(productMapper::productEntityToProductDto).or(() -> Optional.of(ProductDto.builder().build()));
+        return productEntity.map(productMapper::productEntityToProductDto).or(Optional::empty);
     }
 
     @Override

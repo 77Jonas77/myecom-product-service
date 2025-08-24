@@ -1,12 +1,11 @@
 package dev.jsojka.myecom_product_service.controller;
 
 import dev.jsojka.myecom_product_service.dto.ApiResponse;
-import dev.jsojka.myecom_product_service.dto.CreateProductRequestDto;
-import dev.jsojka.myecom_product_service.dto.ProductDto;
-import dev.jsojka.myecom_product_service.dto.UpdateProductRequestDto;
+import dev.jsojka.myecom_product_service.dto.product.CreateProductRequestDto;
+import dev.jsojka.myecom_product_service.dto.product.ProductDto;
+import dev.jsojka.myecom_product_service.dto.product.UpdateProductRequestDto;
 import dev.jsojka.myecom_product_service.service.ProductService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

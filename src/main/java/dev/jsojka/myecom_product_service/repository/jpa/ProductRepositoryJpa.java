@@ -1,8 +1,6 @@
-package dev.jsojka.myecom_product_service.repository;
+package dev.jsojka.myecom_product_service.repository.jpa;
 
 import dev.jsojka.myecom_product_service.model.ProductEntity;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

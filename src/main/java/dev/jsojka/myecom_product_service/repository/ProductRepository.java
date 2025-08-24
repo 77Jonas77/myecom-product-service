@@ -1,7 +1,7 @@
 package dev.jsojka.myecom_product_service.repository;
 
-import dev.jsojka.myecom_product_service.dto.ProductDto;
-import dev.jsojka.myecom_product_service.dto.UpdateProductRequestDto;
+import dev.jsojka.myecom_product_service.dto.product.ProductDto;
+import dev.jsojka.myecom_product_service.dto.product.UpdateProductRequestDto;
 
 import java.util.Optional;
 import java.util.UUID;

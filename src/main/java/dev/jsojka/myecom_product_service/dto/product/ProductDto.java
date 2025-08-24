@@ -1,7 +1,6 @@
-package dev.jsojka.myecom_product_service.dto;
+package dev.jsojka.myecom_product_service.dto.product;
 
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

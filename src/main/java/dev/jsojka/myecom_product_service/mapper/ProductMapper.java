@@ -1,8 +1,9 @@
 package dev.jsojka.myecom_product_service.mapper;
 
-import dev.jsojka.myecom_product_service.dto.CreateProductRequestDto;
-import dev.jsojka.myecom_product_service.dto.ProductDto;
-import dev.jsojka.myecom_product_service.dto.UpdateProductRequestDto;
+
+import dev.jsojka.myecom_product_service.dto.product.ProductDto;
+import dev.jsojka.myecom_product_service.dto.product.CreateProductRequestDto;
+import dev.jsojka.myecom_product_service.dto.product.UpdateProductRequestDto;
 import dev.jsojka.myecom_product_service.model.ProductEntity;
 
 import java.util.UUID;
